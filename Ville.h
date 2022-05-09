@@ -18,10 +18,7 @@ class Ville::Waypoint{
 		}
 	
 		void affiche() const{
-			std::cout << "Plan " << id_plan << " (" << nom_projet << ") version:" << version << " orientation:" << orientation <<" date: " << date_plan << "\n";
-			for ( auto &mur : murs ){
-					mur.affiche();
-			}
+			std::cout << "code postal :" << code_postal << "site:" << site << "nb_habitant": << nb_habitant << "\n";
 		}
 };
 
