@@ -17,10 +17,10 @@ class Carte {
 		float getEchelleLon()const{}
 		std::vector<Waypoint> getWaypoints() const{	}
 		std::vector<Route>getRoutes() const{}
-		std::vector<string> getNomVilles() const{}
+		std::vector<std::string> getNomVilles() const{}
 		void ajoutUnWaypoint(Waypoint w){}
 		void ajoutUneRoute(Route r){}
-		void insereUneVille(Ville * v{}
+		void insereUneVille(Ville * v){}
 		void affiche() const{
 				std::cout << "Carte " << "\n";
 		}
