@@ -13,32 +13,16 @@ class Carte {
 	
 	public :
 		Carte (){}
-         Contour getContour()
-		int getNum() const{
-			return num;
-		}
-		float getX() const{
-			return x;
-		}
-		float getY() const{
-			return y;
-		}
-		void setX(float x){
-			this->x = x;
-		}
-		void setY(float y){
-			this->y = y;
-		}
-		std::string getInfos() const {
-			std::ostringstream texte;
-			texte << "Point " << std::setprecision(2) << std::fixed 
-					<< num << "\n(" << x << "," << y << ")";
-			return texte.str();
-		}
+        Contour getContour(){}
+		float getEchelleLon()const{}
+		std::vector<Waypoint> getWaypoints() const{	}
+		std::vector<Route>getRoutes() const{}
+		std::vector<string> getNomVilles() const{}
+		void ajoutUnWaypoint(Waypoint w){}
+		void ajoutUneRoute(Route r){}
+		void insereUneVille(Ville * v{}
 		void affiche() const{
-				std::cout << "\tpoint " << num << " (" << x << "," << y << ")\n";
+				std::cout << "Carte " << "\n";
 		}
-
 };
-
 #endif

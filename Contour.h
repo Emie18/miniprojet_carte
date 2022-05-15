@@ -1,11 +1,14 @@
 #ifndef CONTOUR_H
 #define CONTOUR_H
-#include "Contour.h"
+#include "Point.h"
 class Contour{
     private:
 
     public:
-    Contour()
+    Contour(){}
+    ~Contour(){}
+    std::vector<Point> getPoints()const{}
+    void ajoutUnPoint(Point p){}
 
 };
 #endif

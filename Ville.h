@@ -1,14 +1,15 @@
 #ifndef VILLE_H
 #define VILLE_H
-
+#include <iostream>
+#include <string>
 #include "Waypoint.h"
-class Ville::Waypoint{
+class Ville : public Waypoint{
     private:
         int nb_habitant;
 		std::string code_postal;
 		std::string site;
     public:
-        Ville (int c_post=0, std::string nom="", int nb_habi=0): code_postal(c_post), site(nom), nb_habitant(nb_habi){
+        Ville (int c_post=0, std::string nom="", int nb_habi=0): code_postal(std::to_string(c_post)), site(nom), nb_habitant(nb_habi){
 		}
 		std::string getSite() const {
 			return site;
