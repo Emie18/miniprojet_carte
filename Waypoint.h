@@ -1,9 +1,10 @@
 #ifndef WAYPOINT_H
-#define WAYPOINT.h
-#include "Carte.h"
+#define WAYPOINT_H
+
 #include <iostream>
 #include <string>
 #include <vector>
+
 class Waypoint{
     private:
         float lon;

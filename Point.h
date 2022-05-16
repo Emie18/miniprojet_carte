@@ -9,8 +9,8 @@ class Point{
     public:
         Point(){}
         ~Point(){}
-       float getLon()const{}
-       float getLat()const{}
+       float getLon()const{return lon;}
+       float getLat()const{return lat;}
 
 };
 #endif

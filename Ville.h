@@ -19,7 +19,7 @@ class Ville : public Waypoint{
 		}
 	
 		void affiche() const{
-			std::cout << "code postal :" << code_postal << "site:" << site << "nb_habitant": << nb_habitant << "\n";
+			std::cout << "code postal :" << code_postal << "site:" << site << "nb_habitant:" << nb_habitant << "\n";
 		}
 };
 

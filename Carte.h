@@ -4,9 +4,11 @@
 #include <string>
 #include <iomanip>
 #include <sstream>
+#include <vector>
 #include "Contour.h"
 #include "Waypoint.h"
 #include "Route.h"
+#include "Ville.h"
 
 class Carte {
 	private :
