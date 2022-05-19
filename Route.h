@@ -7,7 +7,11 @@ class Route{
         int i_fin;
         int distance;
     public:
-        Route(){}
+        Route(int de, int f, int di){
+            i_deb = de;
+            i_fin = f;
+            distance = di;
+        }
         ~Route(){}
         int getIDeb()const{return i_deb;}
         int getIfin()const{return i_fin;}

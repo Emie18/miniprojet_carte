@@ -7,7 +7,11 @@ class Point{
         float lon;
         float lat;
     public:
-        Point(){}
+        Point(int n,float la,float lo){
+            num=n;
+            lon=lo;
+            lat=la;
+        }
         ~Point(){}
        float getLon()const{return lon;}
        float getLat()const{return lat;}
