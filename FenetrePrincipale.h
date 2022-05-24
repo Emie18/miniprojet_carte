@@ -9,13 +9,16 @@
 #include <string>
 #include <QBoxLayout>
 #include <QGraphicsView>
+#include "Carte.h"
+#include "Scene.h"
+//#include "GrandeVue.h"
 
 class FenetrePrincipale : public QMainWindow{
     Q_OBJECT
     public:
-        FenetrePrincipale();//Plan plan);
+        FenetrePrincipale(Carte carte);
         ~FenetrePrincipale() override {}
-        QGroupBox* group_box();
+        QGroupBox* group_box(Carte carte);
     
     private:
         QLabel* villedep;

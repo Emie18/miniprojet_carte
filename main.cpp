@@ -15,17 +15,22 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     // Récupération des saisies après fermeture de la Dialog box
-    
+    Carte carte;
     try {
         // Connexion BD
         BDD bdd("tcp://localhost:3306", "itineraires", "root", "jojo0108");
-        //Contour co =bdd.getContour();
-        // std::vector<Route> ro =bdd.getRoute();
         
-        // // for(auto &elem : ro ){
-        // //     std::cout<<'z'<<elem<'\n';
-        // // }
-        //Carte carte(bdd.getWaypoint(),bdd.getRoute(),bdd.getContour());
+       Contour contour=bdd.getContour();
+        for(auto &elem : contour.getPoints()){
+            std::cout<<elem.getLon();
+        }
+       
+        carte = Carte(bdd.getWaypoint(),bdd.getRoute(),bdd.getContour());
+        Contour a = carte.getContour();
+        std::vector<Point> p = a.getPoints();
+         for(auto elem : p){
+             std::cout<<elem.getLat();
+         }
     }
     catch (sql::SQLException &e) {
         std::cout << "Erreur MySQL. Sortie de l'application\n";
@@ -35,7 +40,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    FenetrePrincipale window;
+    FenetrePrincipale window(carte);
     window.show();
     Carte a;
     a.affiche();

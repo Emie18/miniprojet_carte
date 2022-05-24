@@ -26,6 +26,7 @@ class BDD {
 		std::vector<Route> getRoute();
 		std::vector<Waypoint> getWaypoint();
 		Contour getContour();
+		std::vector<Ville>getVille();
 
 	private :
 		Carte carte;

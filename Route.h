@@ -3,24 +3,22 @@
 #include "Carte.h"
 class Route{
     private:
-        int i_deb;
-        int i_fin;
+        std::string i_deb;
+        std::string i_fin;
         int distance;
     public:
-        Route(int de, int f, int di){
+        Route(std::string de, std::string f, int di){
             i_deb = de;
             i_fin = f;
             distance = di;
         }
         ~Route(){}
-        int getIDeb()const{return i_deb;}
-        int getIfin()const{return i_fin;}
+        std::string getIdeb()const{return i_deb;}
+        std::string getIfin()const{return i_fin;}
         int getDistance()const{return distance;}
         std::string getInfos()const{
-            std::string a = std::to_string(i_deb);
-            std::string b = std::to_string(i_fin);
             std::string c = std::to_string(distance);
-            return "debut:"+a+" fin:"+b+" distance:"+c;
+            return "debut:"+i_deb+" fin:"+i_fin+" distance:"+c;
         }
         void affiche()const{
             std::cout<< this->getInfos()<<"\n";

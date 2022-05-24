@@ -21,7 +21,7 @@ Contour BDD::getContour(){
 	res->next();
 	std::vector<Point> p;
 	while (res->next()){
-		p.push_back(Point(res->getInt(1),res->getInt(2),res->getInt(3)));
+		p.push_back(Point(res->getInt(1),res->getDouble(2),res->getDouble(3)));
 		
 	}
 	Contour contour(p);
@@ -38,7 +38,7 @@ std::vector<Route> BDD::getRoute(){
 	res->next();
 	std::vector<Route> r;
 	while (res->next()){
-		r.push_back(Route(res->getInt(1),res->getInt(2),res->getInt(3)));
+		r.push_back(Route(res->getString(1),res->getString(2),res->getInt(3)));
 		
 	}
 
@@ -54,7 +54,7 @@ std::vector<Waypoint> BDD::getWaypoint(){
 	res->next();
 	std::vector<Waypoint> w;
 	while (res->next()){
-		w.push_back(Waypoint(res->getInt(3),res->getString(1),res->getInt(1)));
+		w.push_back(Waypoint(res->getDouble(3),res->getString(1),res->getDouble(1)));
 		
 	}
 
@@ -63,4 +63,22 @@ std::vector<Waypoint> BDD::getWaypoint(){
 	return w;
 
 }
+std::vector<Ville> BDD::getVille(){
+
+	sql::Statement *stmt = con->createStatement();
+	sql::ResultSet *res = stmt->executeQuery(
+					"select * from ville ");
+	res->next();
+	std::vector<Ville> v;
+	while (res->next()){
+		v.push_back(Ville(res->getString(2),res->getString(4),res->getInt(3)));
+		
+	}
+	delete res;
+	delete stmt;
+	return v;
+}
+
+
+
 

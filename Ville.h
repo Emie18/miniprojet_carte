@@ -9,7 +9,7 @@ class Ville : public Waypoint{
 		std::string code_postal;
 		std::string site;
     public:
-        Ville (int c_post=0, std::string nom="", int nb_habi=0): code_postal(std::to_string(c_post)), site(nom), nb_habitant(nb_habi){
+        Ville (std::string c_post=0, std::string nom="", int nb_habi=0): code_postal(c_post), site(nom), nb_habitant(nb_habi){
 		}
 		std::string getSite() const {
 			return site;

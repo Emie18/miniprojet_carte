@@ -2,11 +2,11 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
-FenetrePrincipale::FenetrePrincipale(){//Plan plan){
+FenetrePrincipale::FenetrePrincipale(Carte carte){
     this->setWindowTitle("Itineraire");
     this->setMinimumWidth(500);
 
-    QWidget* mainWidget = new QWidget();
+    
     QHBoxLayout* mainLayout = new QHBoxLayout();
 
     QGroupBox *groupBox = new QGroupBox;
@@ -20,6 +20,7 @@ FenetrePrincipale::FenetrePrincipale(){//Plan plan){
     this->ville2 = new QLineEdit; 
     this->calculer = new QPushButton("calculer");
 
+    ScenePlan* myscene1 = new ScenePlan(carte);
     QGraphicsView* view1 = new QGraphicsView;
     //view1->scale(1,-1);
     //view1->fitInView(myscene1->sceneRect(),Qt::KeepAspectRatioByExpanding);
@@ -38,9 +39,19 @@ FenetrePrincipale::FenetrePrincipale(){//Plan plan){
     groupBox->setLayout(vbox);
     mainLayout->addWidget(groupBox);
 
-    QGraphicsView* view2 = new QGraphicsView;
+    ScenePlan* myscene2 = new ScenePlan(carte);
+    QGraphicsView* view2 = new QGraphicsView(myscene2,this);
+    view2->scale(1,-1);
+    this->setCentralWidget(view2);
+    view2->fitInView(myscene2->sceneRect(),Qt::KeepAspectRatioByExpanding);
+    
+    
+    
     mainLayout->addWidget(view2);
+    connect(view2, SIGNAL(valueChanged()), this, SLOT(slot_bouton1()));
 
+
+    QWidget* mainWidget = new QWidget();
     mainWidget->setLayout(mainLayout);
     this->setCentralWidget(mainWidget);
 

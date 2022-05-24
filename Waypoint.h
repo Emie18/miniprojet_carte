@@ -6,7 +6,7 @@
 #include <vector>
 
 class Waypoint{
-    private:
+    protected:
         float lon;
 		std::string nom;
 		float lat;

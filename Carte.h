@@ -13,11 +13,11 @@
 
 class Carte {
 	private :
-		std::vector<Waypoint*> waypoint;
+		std::vector<Waypoint> waypoint;
 		std::vector<Route> route;
 		Contour contour;
 	public :
-		Carte (std::vector<Waypoint*> w,std::vector<Route> r,Contour c){
+		Carte (std::vector<Waypoint> w,std::vector<Route> r,Contour c){
 			waypoint = w;
 			route = r;
 			contour = c;
@@ -25,12 +25,12 @@ class Carte {
 		Carte(){}
         Contour getContour(){return contour;}
 		float getEchelleLon()const{}
-		std::vector<Waypoint*> getWaypoints() const{return waypoint;}
+		std::vector<Waypoint> getWaypoints() const{return waypoint;}
 		std::vector<Route>getRoutes() const{return route;}
 		std::vector<std::string> getNomVilles() const{}
-		void ajoutUnWaypoint(Waypoint w){}
-		void ajoutUneRoute(Route r){ }
-		void insereUneVille(Ville * v){}
+		//void ajoutUnWaypoint(Waypoint w){}
+		//void ajoutUneRoute(Route r){ }
+		//void insereUneVille(Ville * v){}
 		void affiche() const{
 				std::cout << "Carte " << "\n";
 		}
