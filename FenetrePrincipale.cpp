@@ -6,6 +6,12 @@ FenetrePrincipale::FenetrePrincipale(Carte carte){
     this->setWindowTitle("Itineraire");
     this->setMinimumWidth(500);
 
+    // Contour contour = carte.getContour();
+    // for (auto& elem: contour.getPoints()){
+
+    //        std::cout<<elem.getLon();
+    // }
+    // std::cout<<"coucouc";
     
     QHBoxLayout* mainLayout = new QHBoxLayout();
 

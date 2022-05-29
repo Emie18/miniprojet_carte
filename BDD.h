@@ -10,26 +10,26 @@
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
 
-#include "Ville.h"
 #include "Carte.h"
-#include "Point.h"
-#include "Waypoint.h"
-#include "Contour.h"
+//#include "Contour.h"
+//#include "Point.h"
+//#include "Ville.h"
+//#include "Waypoint.h"
 
 class BDD {
 	public :
-		BDD ( std::string host, std::string nomBDD, std::string login, std::string pwd);
-		BDD (){}
+		BDD(std::string host, std::string nomBDD, std::string login, std::string pwd);
+		BDD();
 		~BDD();
-
 		
 		std::vector<Route> getRoute();
-		std::vector<Waypoint> getWaypoint();
+		std::vector<Waypoint*> getWaypoint();
 		Contour getContour();
-		std::vector<Ville>getVille();
-
+		Carte carte(std::vector<Waypoint*>,std::vector<Route>,Contour,std::vector<Ville>);
+		std::vector<Ville> getVille();
+		
 	private :
-		Carte carte;
+		Carte cartes;
 		sql::Connection *con;
 };
 #endif

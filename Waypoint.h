@@ -10,6 +10,7 @@ class Waypoint{
         float lon;
 		std::string nom;
 		float lat;
+
     public:
         Waypoint(float lo=0, std::string nom1="", float la=0): lon(lo), nom(nom1), lat(la){};
         std::string getNom(){
@@ -21,15 +22,12 @@ class Waypoint{
         float getLat(){
             return lat;
         }
-        virtual bool isVille(){
-            return true;
-        }
+        virtual bool isVille() const {return false;};
         std::string getInfo(){
             return "info:";
         }
         void affiche(){
             std::cout << nom << "longitude" << lon << "latitude:" << lat << "\n";
-			
         }
 };
 
