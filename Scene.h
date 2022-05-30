@@ -10,7 +10,6 @@ class ScenePlan : public QGraphicsScene{
     public :
         ScenePlan(Carte carte);
         ~ScenePlan() override {}
-
     private:
         static std::map<std::string, QColor> tab_couleurs;  
 };

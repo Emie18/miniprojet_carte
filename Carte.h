@@ -12,7 +12,6 @@
 #include "Route.h"
 #include "Ville.h"
 
-
 class Carte {
 	private :
 		std::vector<Waypoint*> waypoint;

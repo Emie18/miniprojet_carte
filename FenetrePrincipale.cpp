@@ -1,11 +1,11 @@
 #include  "FenetrePrincipale.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-
+#include "dijkstra.h"
 FenetrePrincipale::FenetrePrincipale(Carte carte){
     this->setWindowTitle("Itineraire");
     this->setMinimumWidth(500);
-
+    this->c = carte;
     // Contour contour = carte.getContour();
     // for (auto& elem: contour.getPoints()){
 
@@ -54,11 +54,102 @@ FenetrePrincipale::FenetrePrincipale(Carte carte){
     
     
     mainLayout->addWidget(view2);
-    connect(view2, SIGNAL(valueChanged()), this, SLOT(slot_bouton1()));
+   // connect(view2, SIGNAL(valueChanged()), this, SLOT(slot_bouton1()));
 
-
+    connect(calculer, SIGNAL(clicked()), this, SLOT(slot_bouton()));
     QWidget* mainWidget = new QWidget();
     mainWidget->setLayout(mainLayout);
     this->setCentralWidget(mainWidget);
 
 }
+void FenetrePrincipale::slot_bouton(){
+    
+    //qDebug() << "bouton 1 cliqué";
+    
+     
+   std::string depart = this->ville1->text().toStdString();
+   std::string arrive = this->ville2->text().toStdString();
+    std::vector<Route> r =this->c.getRoutes();
+    std::vector<Waypoint*> w = this->c.getWaypoints();
+    QString d ;
+    //int km =0;
+    for(auto elem:r){
+        if(depart==elem.getIdeb()&& arrive == elem.getIfin()){
+           d = QString::fromStdString(std::to_string(elem.getDistance()));
+        } 
+        //std::cout<<elem.getDistance();
+    }
+    std::string ville = "";
+    int i =0;
+    int graph[58][58] ={0};
+    for (int source = 0; source<w.size();source++){
+        for (int dest = 0; dest<w.size();dest++){
+            for (int route = 0; route<r.size();route++){
+                if(r[route].getIdeb()==w[source]->getNom()&& r[route].getIfin()==w[dest]->getNom()){
+                    graph[source][dest]=r[route].getDistance();
+                    graph[dest][source]=r[route].getDistance();
+                }
+            }
+        }
+    }
+    // int deb = 0;
+    // int fine = 0;
+    // for(int i = 0; i< w.size();i++){
+    //     if(w[i]->getNom()==depart){
+    //         std::cout<<i<<"\n";
+    //         deb = i;
+    //     }
+    //      if(w[i]->getNom()==arrive){
+    //         std::cout<<i<<"\n";
+    //         fine= i;
+    //     }
+    // }
+    // std::cout<<graph[deb][fine];
+    
+    dijkstra(graph, 1);
+    //printShortestDistance(graph, 1, 3, r.size());
+    //dijkstra(graph, 3);
+ //std::cout<< w.size();
+    // for (int i = 0; i<w.size();i++){
+    //         for (int j = 0; j<w.size();j++){
+    //         std::cout<< graph[i][j] <<"  ";
+    //     }
+    //     std::cout<<"\n";
+    // }
+
+
+
+
+    //depart != arrive ||
+    // std::vector<std::string> liste;
+    // while ( i !=7){
+        
+    //     for(int i=0;i<r.size();i++){
+    //         ville = r[i].getIdeb();
+    //         if(ville==depart){
+    //             i++;
+    //             std::cout<<"debut :"<<r[i].getIdeb()<<"      next :"<<r[i].getIfin()<<"\n";
+    //             // km = km + r[i].getDistance();
+    //             ville = depart;
+    //             depart = r[i].getIfin();
+    //            // km += r[i].getDistance();
+    //         }
+    //     }
+    // }
+    // std::string s = "";
+    // int l = 99999;
+    // while(depart !=arrive){
+    //     for(auto elem : r){
+    //         if(elem.getIdeb() == depart && l< elem.getDistance()){
+    //             l = elem.getDistance();
+    //             depart = elem.getIfin();
+    //             liste.push_back(elem.getIfin());
+    //         }
+    //     }
+    // }
+ 
+    //std::cout<<km;
+     this->distance->setText(d);
+   //distance = "13 Km";
+}
+

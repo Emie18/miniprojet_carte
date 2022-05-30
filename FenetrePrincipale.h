@@ -19,14 +19,19 @@ class FenetrePrincipale : public QMainWindow{
         FenetrePrincipale(Carte carte);
         ~FenetrePrincipale() override {}
         QGroupBox* group_box(Carte carte);
+        
     
     private:
         QLabel* villedep;
         QLabel* villearr;
         QLabel* distance;
+        QLabel* valeur;
         QLabel* coordgeo;
         QLineEdit* ville1;
         QLineEdit* ville2;
         QPushButton* calculer;
+        Carte c;
+    public slots:
+    void slot_bouton();
 };
 #endif

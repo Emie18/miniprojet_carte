@@ -22,7 +22,7 @@ class Waypoint{
         float getLat(){
             return lat;
         }
-        virtual bool isVille() const {return false;};
+        virtual bool isVille()  {return false; }
         std::string getInfo(){
             return "info:";
         }

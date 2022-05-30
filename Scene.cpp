@@ -32,15 +32,24 @@ ScenePlan::ScenePlan(Carte carte) { // constructeur
 
     //std::vector<std::string><Ville> ville=carte.getNomVilles();
     std::vector<Waypoint*> v = carte.getWaypoints();
-    
-
-     for (auto& elem: v){
-         if(elem->isVille()==false){
-  std::cout<<'\n';
-  std::cout<<elem->getNom();
-        std::cout<<'\n';
-         }
+   // vi(new std::vector<Ville *>) = v;
+   // std::auto_ptr<v> vi(new std::vector<Ville *>); 
+    //std::cout<<v[1]->getSite;
+//     std::vector<Ville> liste;
+//      for (auto& elem: v){
+ 
+//             liste.push_back(elem->getNom(),elem->getLon(),elem->getLat());    
+//    }
+//    for (auto& elem: liste){
+//          if(elem.isVille()==true){
+//             std::cout<<'\n';
+//             //liste.push_back(elem->getNom());
+//             std::cout<<elem.getNom();
+//             std::cout<<elem.getNb_habitant();
+//             std::cout<<'\n';
+//          }
          
-   }
+//     }
+   
 
 }
