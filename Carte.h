@@ -12,38 +12,37 @@
 #include "Route.h"
 #include "Ville.h"
 
+
 class Carte {
 	private :
 		std::vector<Waypoint*> waypoint;
 		std::vector<Route> route;
 		Contour contour;
+		std::vector<Ville> ville;
+		std::vector<std::string> nomvilles;
 		
 	public :
-		Carte(std::vector<Waypoint*> w,std::vector<Route> r,Contour c){
+		Carte(std::vector<Waypoint*> w,std::vector<Route> r,Contour c,std::vector<Ville> v){
 			waypoint = w;
 			route = r;
 			contour = c;
-		
+			ville = v;
 		}
 		Carte(){}
         Contour getContour(){return contour;}
-		float getEchelleLon()const{}
+		float getEchelleLon()const{return 12.2;}
 		std::vector<Waypoint*> getWaypoints() const{return waypoint;}
 		std::vector<Route> getRoutes() const{return route;}
-		std::vector<std::string> getNomVilles() const{
-			for(auto& elem: waypoint){
-				getNomVilles().push_back(elem->getNom());
-			}
-			}
-		
+		std::vector<Ville> getVilles() const{return ville;}
+		std::vector<std::string> getNomVilles(){
+		 	for(auto& elem: ville){
+				nomvilles.push_back(elem.getNom());
+		 	}
+		 	return nomvilles;
+		}
 		//void ajoutUnWaypoint(Waypoint w){}
 		//void ajoutUneRoute(Route r){ }
 		//void insereUneVille(Ville * v){}
-		void affiche() const{
-				std::cout << "Carte " << "\n";
-				//for ( auto &route : routes ){
-				//	route.affiche();
-			//}
-		}
+		void affiche() const{}
 };
 #endif

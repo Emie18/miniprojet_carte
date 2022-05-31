@@ -53,7 +53,9 @@ SOURCES       = BDD.cpp \
 		LoginDialog.cpp \
 		main.cpp \
 		Scene.cpp moc_FenetrePrincipale.cpp \
+		moc_GrandeVue.cpp \
 		moc_LoginDialog.cpp \
+		moc_MinieVue.cpp \
 		moc_Scene.cpp
 OBJECTS       = BDD.o \
 		FenetrePrincipale.o \
@@ -61,7 +63,9 @@ OBJECTS       = BDD.o \
 		main.o \
 		Scene.o \
 		moc_FenetrePrincipale.o \
+		moc_GrandeVue.o \
 		moc_LoginDialog.o \
+		moc_MinieVue.o \
 		moc_Scene.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -126,7 +130,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		Contour.h \
 		dijkstra.h \
 		FenetrePrincipale.h \
+		GrandeVue.h \
 		LoginDialog.h \
+		MinieVue.h \
 		Point.h \
 		Route.h \
 		Scene.h \
@@ -305,7 +311,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents BDD.h Carte.h Contour.h dijkstra.h FenetrePrincipale.h LoginDialog.h Point.h Route.h Scene.h Ville.h Waypoint.h $(DISTDIR)/
+	$(COPY_FILE) --parents BDD.h Carte.h Contour.h dijkstra.h FenetrePrincipale.h GrandeVue.h LoginDialog.h MinieVue.h Point.h Route.h Scene.h Ville.h Waypoint.h $(DISTDIR)/
 	$(COPY_FILE) --parents BDD.cpp FenetrePrincipale.cpp LoginDialog.cpp main.cpp Scene.cpp $(DISTDIR)/
 
 
@@ -329,9 +335,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_FenetrePrincipale.cpp moc_LoginDialog.cpp moc_Scene.cpp
+compiler_moc_header_make_all: moc_FenetrePrincipale.cpp moc_GrandeVue.cpp moc_LoginDialog.cpp moc_MinieVue.cpp moc_Scene.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_FenetrePrincipale.cpp moc_LoginDialog.cpp moc_Scene.cpp
+	-$(DEL_FILE) moc_FenetrePrincipale.cpp moc_GrandeVue.cpp moc_LoginDialog.cpp moc_MinieVue.cpp moc_Scene.cpp
 moc_FenetrePrincipale.cpp: Carte.h \
 		Contour.h \
 		Point.h \
@@ -339,11 +345,33 @@ moc_FenetrePrincipale.cpp: Carte.h \
 		Route.h \
 		Ville.h \
 		Scene.h \
+		GrandeVue.h \
+		MinieVue.h \
 		FenetrePrincipale.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/isen/C++/miniprojet -I/home/isen/C++/miniprojet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include FenetrePrincipale.h -o moc_FenetrePrincipale.cpp
 
+moc_GrandeVue.cpp: Scene.h \
+		Carte.h \
+		Contour.h \
+		Point.h \
+		Waypoint.h \
+		Route.h \
+		Ville.h \
+		GrandeVue.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/isen/C++/miniprojet -I/home/isen/C++/miniprojet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include GrandeVue.h -o moc_GrandeVue.cpp
+
 moc_LoginDialog.cpp: LoginDialog.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/isen/C++/miniprojet -I/home/isen/C++/miniprojet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include LoginDialog.h -o moc_LoginDialog.cpp
+
+moc_MinieVue.cpp: Scene.h \
+		Carte.h \
+		Contour.h \
+		Point.h \
+		Waypoint.h \
+		Route.h \
+		Ville.h \
+		MinieVue.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/isen/C++/miniprojet -I/home/isen/C++/miniprojet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include MinieVue.h -o moc_MinieVue.cpp
 
 moc_Scene.cpp: Carte.h \
 		Contour.h \
@@ -385,7 +413,8 @@ FenetrePrincipale.o: FenetrePrincipale.cpp FenetrePrincipale.h \
 		Route.h \
 		Ville.h \
 		Scene.h \
-		dijkstra.h
+		GrandeVue.h \
+		MinieVue.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o FenetrePrincipale.o FenetrePrincipale.cpp
 
 LoginDialog.o: LoginDialog.cpp LoginDialog.h
@@ -399,6 +428,8 @@ main.o: main.cpp FenetrePrincipale.h \
 		Route.h \
 		Ville.h \
 		Scene.h \
+		GrandeVue.h \
+		MinieVue.h \
 		LoginDialog.h \
 		BDD.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
@@ -415,8 +446,14 @@ Scene.o: Scene.cpp Scene.h \
 moc_FenetrePrincipale.o: moc_FenetrePrincipale.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_FenetrePrincipale.o moc_FenetrePrincipale.cpp
 
+moc_GrandeVue.o: moc_GrandeVue.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_GrandeVue.o moc_GrandeVue.cpp
+
 moc_LoginDialog.o: moc_LoginDialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_LoginDialog.o moc_LoginDialog.cpp
+
+moc_MinieVue.o: moc_MinieVue.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MinieVue.o moc_MinieVue.cpp
 
 moc_Scene.o: moc_Scene.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Scene.o moc_Scene.cpp

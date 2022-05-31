@@ -9,29 +9,35 @@
 #include <string>
 #include <QBoxLayout>
 #include <QGraphicsView>
+#include <QStatusBar>
 #include "Carte.h"
 #include "Scene.h"
-//#include "GrandeVue.h"
+#include "GrandeVue.h"
+#include "MinieVue.h"
 
 class FenetrePrincipale : public QMainWindow{
     Q_OBJECT
     public:
         FenetrePrincipale(Carte carte);
         ~FenetrePrincipale() override {}
-        QGroupBox* group_box(Carte carte);
-        
-    
+        QGroupBox* group_box();
+        int ville_index(std::string nom,std::vector<Waypoint*> w);
     private:
+    
         QLabel* villedep;
         QLabel* villearr;
         QLabel* distance;
-        QLabel* valeur;
-        QLabel* coordgeo;
         QLineEdit* ville1;
         QLineEdit* ville2;
         QPushButton* calculer;
+        GrandeVue *myview1;
+		MinieVue *myview2;
+        ScenePlan *myscene;
+        QStatusBar *barre_statut;
         Carte c;
-    public slots:
-    void slot_bouton();
+        private slots:
+		    void affiche_pos( QPointF p);
+            void slot_bouton();
 };
 #endif
+

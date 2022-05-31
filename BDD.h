@@ -11,12 +11,9 @@
 #include <cppconn/statement.h>
 
 #include "Carte.h"
-//#include "Contour.h"
-//#include "Point.h"
-//#include "Ville.h"
-//#include "Waypoint.h"
 
-class BDD {
+
+class BDD{
 	public :
 		BDD(std::string host, std::string nomBDD, std::string login, std::string pwd);
 		BDD();
@@ -25,8 +22,8 @@ class BDD {
 		std::vector<Route> getRoute();
 		std::vector<Waypoint*> getWaypoint();
 		Contour getContour();
-		Carte carte(std::vector<Waypoint*>,std::vector<Route>,Contour,std::vector<Ville>);
 		std::vector<Ville> getVille();
+		Carte carte(std::vector<Waypoint*>,std::vector<Route>,Contour,std::vector<Ville>);
 		
 	private :
 		Carte cartes;

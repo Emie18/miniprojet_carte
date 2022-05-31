@@ -9,17 +9,11 @@ class Contour{
         std::vector<Point> point;
         
     public:
-        Contour(std::vector<Point> p){
-            point=p;
-        }
+        Contour(std::vector<Point> p){point=p;}
         Contour(){}
         ~Contour(){}
-        std::vector<Point> getPoints()const{
-            return point;
-        }
-        void affiche(){
-            std::cout<<"conouut";
-        }
+        std::vector<Point> getPoints()const{return point;}
+        void affiche(){}
         void ajoutUnPoint(Point p){
             point.push_back(p);
         }

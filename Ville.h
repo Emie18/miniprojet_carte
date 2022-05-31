@@ -6,32 +6,21 @@
 
 class Ville : public Waypoint{
     private:
-        int nb_habitant;
+        	
+		std::string nom;
 		std::string code_postal;
+		int nb_habitant;
 		std::string site;
 
+
     public:
-        Ville (std::string n, float lo, float la, std::string c_post=0, std::string nom="", int nb_habi=0): code_postal(c_post), site(nom), nb_habitant(nb_habi){
-			lon = lo;
-			lat = la;
-			nom = n;
-		}
-		std::string getSite() const {
-			return site;
-		}
-		int getNb_habitant(){return nb_habitant;}
-		bool isVille() const{
-		// 		std::string str =this->getNom();
-		// 	if(str.find("Pont ") != std::string::npos){
-        //         return 0;			
-		// }else{
-		// 	return 1;
-		// }
-		return true;
-		}
-		std::string getInfos(){}
+        Ville (std::string nom1="",std::string c_post=0,  int nb_habi=0, std::string site1=""): nom(nom1),code_postal(c_post), nb_habitant(nb_habi), site(site1){}
+		std::string getSite() const{return site;}
+		std::string getNom(){return nom;}
+		bool isVille() const{return true;}
+		std::string getInfos(){return "info";}
 		void affiche() const{
-			std::cout << "code postal :" << code_postal << "site:" << site << "nb_habitant:" << nb_habitant << "\n";
+			std::cout << "nom: "<<";\n code postal: " << code_postal << "; \n site: " << site << ";\n nb_habitant: " << nb_habitant << ".\n";
 		}
 };
 #endif

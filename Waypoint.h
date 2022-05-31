@@ -7,27 +7,19 @@
 
 class Waypoint{
     protected:
+        std::string nom;
+        float lat;
         float lon;
-		std::string nom;
-		float lat;
 
     public:
-        Waypoint(float lo=0, std::string nom1="", float la=0): lon(lo), nom(nom1), lat(la){};
-        std::string getNom(){
-            return nom;
-        }
-        float getLon(){
-            return lon;
-        }
-        float getLat(){
-            return lat;
-        }
-        virtual bool isVille()  {return false; }
-        std::string getInfo(){
-            return "info:";
-        }
+        Waypoint(std::string nom1="",float la=0,  float lo=0): nom(nom1),lat(la),lon(lo){};
+        std::string getNom(){return nom;}
+        float getLon(){return lon;}
+        float getLat(){return lat;}
+        virtual bool isVille() const {return false;};
+        std::string getInfo(){return (nom+"longitude"+std::to_string(lon)+"latitude:"+std::to_string(lat)+"\n");        }
         void affiche(){
-            std::cout << nom << "longitude" << lon << "latitude:" << lat << "\n";
+            std::cout << this->getInfo();
         }
 };
 

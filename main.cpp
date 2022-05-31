@@ -25,11 +25,7 @@ int main(int argc, char* argv[]) {
         //BDD bdd("tcp://"+host+":3306", base, user, pwd);
         BDD bdd("tcp://localhost:3306", "itineraires", "root", "jojo0108");
         //récupération de la carte       
-        cartes = Carte(bdd.getWaypoint(),bdd.getRoute(),bdd.getContour());
-        // std::vector<Ville> vi = bdd.getVille();
-        // for(auto &elem : vi){
-        //     std::cout<<elem.getLon()<<"\n";
-        // }
+        cartes = Carte(bdd.getWaypoint(),bdd.getRoute(),bdd.getContour(),bdd.getVille());
     }
     catch (sql::SQLException &e) {
         std::cout << "Erreur MySQL. Sortie de l'application\n";

@@ -21,7 +21,6 @@ BDD::~BDD(){
 std::vector<Route> BDD::getRoute(){
 	sql::Statement *stmt = con->createStatement();
 	sql::ResultSet *res = stmt->executeQuery("select * from route ");
-	//res->next();
 	std::vector<Route> r;
 	while (res->next()){
 		r.push_back(Route(res->getString(1),res->getString(2),res->getInt(3)));		
@@ -36,27 +35,25 @@ std::vector<Route> BDD::getRoute(){
 std::vector<Waypoint*> BDD::getWaypoint(){
 	sql::Statement *stmt = con->createStatement();
 	sql::ResultSet *res = stmt->executeQuery("select * from waypoint ");
-	//res->next();
 	std::vector<Waypoint*> w;
-
 	while (res->next()){
-		Waypoint* wayp = new Waypoint(res->getDouble(3),res->getString(1),res->getDouble(1));
-		w.push_back(wayp);		
-	}
-
+		Waypoint* wayp = new Waypoint(res->getString(1),res->getDouble(2),res->getDouble(3));
+		w.push_back(wayp);
+	}				
+	
 	delete res;
 	delete stmt;
 	return w;
 }
 
 
+
 std::vector<Ville> BDD::getVille(){
 	sql::Statement *stmt = con->createStatement();
-	sql::ResultSet *res = stmt->executeQuery("select ville.nom, code_postal, nb_habitants, site,lon, lat from waypoint join ville on ville.nom = waypoint.nom");
-//	res->next();
+	sql::ResultSet *res = stmt->executeQuery("select * from ville");
 	std::vector<Ville> v;
 	while (res->next()){
-		v.push_back(Ville(res->getString(1),res->getDouble(5),res->getDouble(6),res->getString(2),res->getString(4),res->getInt(3)));		
+		v.push_back(Ville(res->getString(1),res->getString(2),res->getInt(3),res->getString(4)));		
 	}
 	delete res;
 	delete stmt;
@@ -67,8 +64,7 @@ std::vector<Ville> BDD::getVille(){
 Contour BDD::getContour(){
  	sql::Statement *stmt = con->createStatement();
   	sql::ResultSet *res = stmt->executeQuery("select * from contour");
-  //	res->next();
-	std::vector<Point> p;
+  	std::vector<Point> p;
 	while (res->next()){
 		p.push_back(Point(res->getInt(1),res->getDouble(2),res->getDouble(3)));		
 	}
@@ -78,4 +74,3 @@ Contour BDD::getContour(){
 	delete stmt;
 	return contour;
 }
-

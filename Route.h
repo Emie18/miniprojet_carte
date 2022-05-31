@@ -13,8 +13,8 @@ class Route{
             distance = di;
         }
         ~Route(){}
-        std::string getIdeb()const{return i_deb;}
-        std::string getIfin()const{return i_fin;}
+        std::string getIDeb()const{return i_deb;}
+        std::string getIFin()const{return i_fin;}
         int getDistance()const{return distance;}
         std::string getInfos()const{
             std::string c = std::to_string(distance);
