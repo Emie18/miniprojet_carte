@@ -1,3 +1,8 @@
+/*----------------------------
+    fichier MinieVue.h
+    contient la class MinieVue
+	et ses fonctions
+------------------------------*/
 #ifndef MINIEVUE_H
 #define MINIEVUE_H
 

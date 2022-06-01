@@ -1,8 +1,12 @@
+/*-----------------------
+  fichier dijkstra.h
+------------------------*/
 // Programme C++ pour le chemin le plus court source unique de Dijkstra
 // algorithme.Le programme est pour la matrice d'adjacence
-// représentation du graphe.
+// représentatant le graphe.
 #ifndef DIJKSTRA_H
 #define DIJKSTRA_H
+
 #include <bits/stdc++.h>
 using namespace std;
 // Nombre de sommets dans le graphe

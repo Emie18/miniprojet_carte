@@ -4,6 +4,7 @@ contient la class ScenePlan
 -----------------------*/
 #ifndef SCENEPLAN_H
 #define SCENEPLAN_H
+
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 #include <QWheelEvent>
@@ -11,12 +12,14 @@ contient la class ScenePlan
 #include <QDebug>
 #include "Carte.h"
 
-class ScenePlan : public QGraphicsScene{
+class ScenePlan : public QGraphicsScene
+{
     Q_OBJECT
-    public :
-        ScenePlan(Carte carte,std::vector<int> chemin);
-        ~ScenePlan() override {}
-    private:
-        static std::map<std::string, QColor> tab_couleurs;  
+public:
+    ScenePlan(Carte carte, std::vector<int> chemin);
+    ~ScenePlan() override {}
+
+private:
+    static std::map<std::string, QColor> tab_couleurs;
 };
 #endif
