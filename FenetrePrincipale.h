@@ -1,6 +1,6 @@
 /*---------------------
 	fichier FenetrePrincipale.h
-contient la class FenetrePrincipale
+contient class FenetrePrincipale
 -----------------------*/
 #ifndef FENETREPRINCIPALE_H
 #define FENETREPRINCIPALE_H
