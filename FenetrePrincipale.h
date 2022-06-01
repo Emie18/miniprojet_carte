@@ -1,3 +1,7 @@
+/*---------------------
+	fichier FenetrePrincipale.h
+contient la class FenetrePrincipale
+-----------------------*/
 #ifndef FENETREPRINCIPALE_H
 #define FENETREPRINCIPALE_H
 #include <QMainWindow>
@@ -10,6 +14,9 @@
 #include <QBoxLayout>
 #include <QGraphicsView>
 #include <QStatusBar>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include<QMessageBox>
 #include "Carte.h"
 #include "Scene.h"
 #include "GrandeVue.h"
@@ -21,6 +28,8 @@ class FenetrePrincipale : public QMainWindow{
         FenetrePrincipale(Carte carte);
         ~FenetrePrincipale() override {}
         QGroupBox* group_box();
+        //fonction pour récupérer l'index de la ville
+        //rentrée par l'utilisation
         int ville_index(std::string nom,std::vector<Waypoint*> w);
     private:
     

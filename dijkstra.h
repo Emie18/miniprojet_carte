@@ -13,7 +13,7 @@ using namespace std;
 // dans l'arborescence des chemins les plus courts
 int minDistance(int dist[], bool sptSet[])
 {
-	// Initialise la valeur min
+	// Initialise la valeur min à l'infini
 	int min = INT_MAX;
 	int min_index = 0;
 	for (int i = 0; i < V; i++)
@@ -34,7 +34,7 @@ void printPath(int parent[], int j, vector<int> *chemin)
 		return;
 	}
 	printPath(parent, parent[j], chemin);
-	cout << j << " ";
+	//cout << j << " ";
 	chemin->push_back(j);
 }
 
@@ -47,8 +47,8 @@ vector<int> printSolution(int dist[], int n, int parent[], int src, int dest, in
 	{
 		if (i == dest)
 		{
-			printf("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i],
-				   src);
+			//printf("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i],
+			//	   src);
 			*distance = dist[i];
 			printPath(parent, i, &chemin);
 		}
@@ -93,10 +93,6 @@ vector<int> dijkstra(int graph[V][V], int src, int dest, int *distance)
 
 			if (!sptSet[v] && graph[u][v] && dist[u] + graph[u][v] < dist[v] && v != src)
 			{
-				if (v == src)
-				{
-					cout << "toto " << v;
-				}
 				parent[v] = u;
 				dist[v] = dist[u] + graph[u][v];
 			}

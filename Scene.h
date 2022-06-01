@@ -1,6 +1,6 @@
 /*---------------------
 	fichier Scene.h
-contient la class Scene
+contient la class ScenePlan
 -----------------------*/
 #ifndef SCENEPLAN_H
 #define SCENEPLAN_H
