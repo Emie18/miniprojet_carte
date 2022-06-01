@@ -80,13 +80,14 @@ class GrandeVue : public QGraphicsView {
 			int y2 = viewport()->y()+viewport()->height()-10;
 			int x1 = x2 - echelle;
 			int y1 = y2;
-			int longueur_tick = qMin(static_cast<int>(echelle/10),5);
+			int longueur_tick = qMin(static_cast<int>(echelle/10),4);
 			painter->drawLine(x1,y1,x2,y2);
 			painter->drawLine(x1,y1-longueur_tick,x1,y1+longueur_tick);
 			painter->drawLine(x2,y2-longueur_tick,x2,y2+longueur_tick);
 			QRectF rect_texte(x1, y1-30, x2-x1, 20 );
 			QString s = QString::number(longueur_tick*10);
-			painter->drawText(rect_texte, Qt::AlignCenter|Qt::TextDontClip,s);
+            painter->drawText(rect_texte, Qt::AlignCenter|Qt::TextDontClip,s+" km");
+			//painter->drawText(rect_texte, Qt::AlignCenter|Qt::TextDontClip,"1 m");
 			painter->setWorldMatrixEnabled(true);
 			//painter->restore();  // pas utile
         }

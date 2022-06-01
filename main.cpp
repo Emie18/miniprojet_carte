@@ -37,7 +37,6 @@ int main(int argc, char* argv[]) {
 
     FenetrePrincipale window (cartes);
     window.show();
-    cartes.affiche();
     return app.exec();
 
     return 0; 

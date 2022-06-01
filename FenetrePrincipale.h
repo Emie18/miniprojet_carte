@@ -34,6 +34,9 @@ class FenetrePrincipale : public QMainWindow{
 		MinieVue *myview2;
         ScenePlan *myscene;
         QStatusBar *barre_statut;
+        QWidget* mainWidget;
+        QHBoxLayout* mainLayout;
+        QVBoxLayout *vbox;
         Carte c;
         private slots:
 		    void affiche_pos( QPointF p);

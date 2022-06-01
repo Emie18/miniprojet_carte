@@ -1,107 +1,109 @@
-// C++ program for Dijkstra's single source shortest path
-// algorithm.The program is for adjacency matrix
-// representation of the graph.
+// Programme C++ pour le chemin le plus court source unique de Dijkstra
+// algorithme.Le programme est pour la matrice d'adjacence
+// représentation du graphe.
+#ifndef DIJKSTRA_H
+#define DIJKSTRA_H
 #include <bits/stdc++.h>
 using namespace std;
-
-// Number of vertices in the graph
+// Nombre de sommets dans le graphe
 #define V 58
 
-// A utility function to find the vertex with minimum
-// distance value, from the set of vertices not yet included
-// in shortest path tree
+// Une fonction utilitaire pour trouver le sommet avec le minimum
+// valeur de distance, à partir de l'ensemble des sommets non encore inclus
+// dans l'arborescence des chemins les plus courts
 int minDistance(int dist[], bool sptSet[])
 {
-	// Initialize min value
-	int min = INT_MAX, min_index;
+	// Initialise la valeur min
+	int min = INT_MAX;
+	int min_index = 0;
 	for (int i = 0; i < V; i++)
 		if (sptSet[i] == false && dist[i] <= min)
+		{
 			min = dist[i], min_index = i;
+		}
 	return min_index;
 }
 
-// Function to print shortest path from source to j using
-// parent array
-void printPath(int parent[], int j,vector<int> *chemin)
+// Fonction pour imprimer le chemin le plus court de la source à j en utilisant
+// tableau parent
+void printPath(int parent[], int j, vector<int> *chemin)
 {
-	// Base Case : If j is source
-	if (parent[j] == -1){
+	// Cas de base : si j est la source
+	if (parent[j] == -1)
+	{
 		return;
 	}
-	printPath(parent, parent[j],chemin);
+	printPath(parent, parent[j], chemin);
 	cout << j << " ";
 	chemin->push_back(j);
 }
 
-// A utility function to print the constructed distance
-// array
-vector<int> printSolution(int dist[], int n, int parent[],int src,int dest)
+// Une fonction utilitaire pour imprimer la distance construite
+vector<int> printSolution(int dist[], int n, int parent[], int src, int dest, int *distance)
 {
-	//int src = 0;
 	vector<int> chemin;
 	chemin.push_back(src);
-	//cout << "Vertex\t Distance\tPath";
-	for (int i = 0; i < n; i++) {
-		if(i==dest){
-		printf("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i],
-			src);
-		printPath(parent, i,&chemin);
+	for (int i = 0; i < n; i++)
+	{
+		if (i == dest)
+		{
+			printf("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i],
+				   src);
+			*distance = dist[i];
+			printPath(parent, i, &chemin);
 		}
 	}
 	return chemin;
 }
-
-// Function that implements Dijkstra's single source
-// shortest path algorithm for a graph represented using
-// adjacency matrix representation
-vector<int> dijkstra(int graph[V][V], int src,int dest)
+// Fonction qui implémente la source unique de Dijkstra
+// algorithme du plus court chemin pour un graphe représenté à l'aide
+// de la représentation matricielle d'adjacence
+vector<int> dijkstra(int graph[V][V], int src, int dest, int *distance)
 {
-	// The output array. dist[i] will hold the shortest
-	// distance from src to i
+	// Le tableau de sortie. dist[i] tiendra le plus court
+	// distance de src à i
 	int dist[V];
-	// sptSet[i] will true if vertex i is included / in
-	// shortest path tree or shortest distance from src to i
-	// is finalized
-	bool sptSet[V] = { false };
+	// sptSet[i] sera vrai si le sommet i est inclus dans
+	// l'arbre du chemin le plus court ou distance la plus courte de src à i
+	// est finalisé
+	bool sptSet[V] = {false};
 
-	// Parent array to store shortest path tree
+	// Tableau parent pour stocker l'arborescence des chemins les plus courts
 	int parent[V];
-	for(int toto=0;toto<V; toto++){
-			parent[toto] = -1;
-		}
+	for (int toto = 0; toto < V; toto++)
+	{
+		parent[toto] = -1;
+	}
 
-	// Initialize all distances as INFINITE
+	// Initialise les distance à l'INFINITE
 	for (int i = 0; i < V; i++)
 		dist[i] = INT_MAX;
 
-	// Distance of source vertex from itself is always 0
+	// La distance du sommet source à lui-même est toujours 0
 	dist[src] = 0;
 
-	// Find shortest path for all vertices
-	for (int count = 0 ; count < V - 1 ; count++) {
-		
-		int u = minDistance(dist, sptSet);
-		
-		sptSet[u] = true;
-	
-		for (int v = 0; v < V; v++){
+	// Trouve le chemin le plus court pour tous les sommets
+	for (int count = 0; count < V - 1; count++)
+	{
 
-			if (!sptSet[v] && graph[u][v]
-				&& dist[u] + graph[u][v] < dist[v]
-				&& v != src) {
-				if (v == src){cout<<"toto "<<v;}
+		int u = minDistance(dist, sptSet);
+		sptSet[u] = true;
+		for (int v = 0; v < V; v++)
+		{
+
+			if (!sptSet[v] && graph[u][v] && dist[u] + graph[u][v] < dist[v] && v != src)
+			{
+				if (v == src)
+				{
+					cout << "toto " << v;
+				}
 				parent[v] = u;
 				dist[v] = dist[u] + graph[u][v];
-				// cout<<u<<" "<<v<<"  "<<dist[v]<<"  \n";
 			}
-			//cout<<parent[v]<<"    ";
 		}
-		
 	}
-	//cout<<"\n"<<dist[1];
-	// print the constructed distance array
-	vector<int> chemin = printSolution(dist, V, parent,src,dest);
+	vector<int> chemin = printSolution(dist, V, parent, src, dest, distance);
 	return chemin;
 }
-
-// This code is contributed by Aditya Kumar (adityakumar129)
+#endif
+// This code is contributed by Aditya Kumar (adityakumar129) et modifier par Emilie et Maryline
