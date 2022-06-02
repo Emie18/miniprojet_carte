@@ -1,8 +1,11 @@
-/*---------------------
+/*-----------------------
 	fichier Carte.h
 contient la class Carte
 et ses fonctions membre
------------------------*/
+Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
+-------------------------*/
+
 #ifndef CARTE_H
 #define CARTE_H
 
@@ -15,6 +18,7 @@ et ses fonctions membre
 #include "Waypoint.h"
 #include "Route.h"
 #include "Ville.h"
+
 class Carte
 {
 private:
@@ -25,6 +29,7 @@ private:
 	std::vector<std::string> nomvilles;
 
 public:
+	//constructeur avec paramètre
 	Carte(std::vector<Waypoint *> w, std::vector<Route> r, Contour c, std::vector<Ville> v)
 	{
 		waypoint = w;
@@ -35,6 +40,7 @@ public:
 	Carte() {}
 	Contour getContour() { return contour; }
 	//float getEchelleLon()const{return 0;}
+	//getteurs
 	std::vector<Waypoint *> getWaypoints() const { return waypoint; }
 	std::vector<Route> getRoutes() const { return route; }
 	std::vector<Ville> getVilles() const { return ville; }

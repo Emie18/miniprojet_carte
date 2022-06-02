@@ -1,7 +1,9 @@
-/*---------------------
+/*-------------------------
 	fichier Contour.h
 contient la class Contour
------------------------*/
+Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
+---------------------------*/
 #ifndef CONTOUR_H
 #define CONTOUR_H
 
@@ -19,6 +21,7 @@ public:
     ~Contour() {}
     //getteur point (vecteur de Point)
     std::vector<Point> getPoints() const { return point; }
+    //fonction ajoutant un point à l'attribu point
     void ajoutUnPoint(Point p)
     {
         point.push_back(p);

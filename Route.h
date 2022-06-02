@@ -1,8 +1,10 @@
-/*---------------------
+/*-----------------------
 	fichier Route.h
 contient la class Route
 et ses fonctions membres
------------------------*/
+Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
+-------------------------*/
 #ifndef ROUTE_H
 #define ROUTE_H
 

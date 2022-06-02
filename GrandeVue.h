@@ -2,6 +2,8 @@
 	fichier GrandeVue.h
 	contient la class GrandeVue
 	et ses fonctions
+	Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
 --------------------------------*/
 #ifndef GRANDEVUE_H
 #define GRANDEVUE_H
@@ -19,7 +21,8 @@ public:
 	GrandeVue(ScenePlan *scene, QWidget *w) : QGraphicsView(scene, w)
 	{
 		Q_UNUSED(scene);
-		scale(1, -1); // inversion des y
+		// inversion des y
+		scale(1, -1);
 		setMouseTracking(true);
 		setViewportUpdateMode(QGraphicsView::FullViewportUpdate); // important pour la North arrow
 	}
@@ -75,22 +78,15 @@ private:
 	}
 	void drawBackground(QPainter *painter, const QRectF &) override
 	{
-		//painter->save(); // pas utile
-		painter->setWorldMatrixEnabled(false); // mettre en coords View (pixels)
-		// Chargement image et rotation selon orientation plan
+		painter->setWorldMatrixEnabled(false);
 		QPixmap pixmap("north.png");
-		QTransform matrice;
-		//matrice.rotate(orientation_nord);
-		//QPixmap pixmap2 = pixmap.transformed(matrice);
 
 		painter->drawPixmap(viewport()->x(), viewport()->y(), pixmap);
 		painter->setWorldMatrixEnabled(true);
-		//painter->restore();  // pas utile
 	}
 	void drawForeground(QPainter *painter, const QRectF &) override
 	{
-		//painter->save();  // pas utile
-		painter->setWorldMatrixEnabled(false); // mettre en coords View (pixels)
+		painter->setWorldMatrixEnabled(false);
 		painter->setPen(QPen(Qt::black, 0));
 		qreal echelle = this->transform().m11();
 		int x2 = viewport()->x() + viewport()->width() - 10;
@@ -104,9 +100,7 @@ private:
 		QRectF rect_texte(x1, y1 - 30, x2 - x1, 20);
 		QString s = QString::number(longueur_tick * 10);
 		painter->drawText(rect_texte, Qt::AlignCenter | Qt::TextDontClip, s + " km");
-		//painter->drawText(rect_texte, Qt::AlignCenter|Qt::TextDontClip,"1 m");
 		painter->setWorldMatrixEnabled(true);
-		//painter->restore();  // pas utile
 	}
 };
 

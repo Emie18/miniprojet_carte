@@ -2,6 +2,8 @@
     fichier LoginDialog.h
     contient la class 
     LoginDialog
+    Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
 --------------------------*/
 #ifndef LOGINDIALOG_H
 #define LOGINDIALOG_H
@@ -22,6 +24,8 @@ class LoginDialog : public QDialog
 public:
     LoginDialog();
     ~LoginDialog(){};
+
+    //fonction récupère les saisis
     void getResult(std::string &host, std::string &base, std::string &user, std::string &pwd);
 
 private:

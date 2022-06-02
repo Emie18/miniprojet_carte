@@ -2,6 +2,8 @@
 	fichier Point.h
 contient la class Point
 et ses fonctions membres
+Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
 -----------------------*/
 #ifndef POINT_H
 #define POINT_H

@@ -1,10 +1,13 @@
-/*---------------------
+/*------------------------
 	fichier BDD.cpp
-contient les fonction 
-de la class BDD.h
------------------------*/
+	contient les fonction
+	de la class BDD.h
+Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
+--------------------------*/
 #include "BDD.h"
 #include <cmath>
+
 BDD::BDD(std::string host, std::string nomBDD, std::string login, std::string pwd)
 {
 	/* Create a connection */
@@ -20,7 +23,8 @@ BDD::~BDD()
 	std::cout << "Fermeture connexion\n";
 	delete con;
 }
-//getRoute()récupère les routes de la base de donnée
+
+//getRoute()récupère les routes de la base de données
 //et retourne le vecteur des routes
 std::vector<Route> BDD::getRoute()
 {
@@ -35,7 +39,8 @@ std::vector<Route> BDD::getRoute()
 	delete stmt;
 	return r;
 }
-//getWaypoint()récupère les waypoint(ville,pont,...) de la base de donnée
+
+//getWaypoint()récupère les waypoint(ville,pont,...) de la base de données
 //et retourne le vecteur pointeur des waypoints
 std::vector<Waypoint *> BDD::getWaypoint()
 {
@@ -51,7 +56,8 @@ std::vector<Waypoint *> BDD::getWaypoint()
 	delete stmt;
 	return w;
 }
-//getVille()récupère les villes de la base de donnée
+
+//getVille()récupère les villes de la base de données
 //et retourne le vecteur des villes
 std::vector<Ville> BDD::getVille()
 {
@@ -66,9 +72,9 @@ std::vector<Ville> BDD::getVille()
 	delete stmt;
 	return v;
 }
-//getRoute()récupère les Points de la base de donnée
-//puis créer un contour avec ces points que
-//la fonction va retourner le Contour créé
+
+//getRoute() récupère les points de la base de données
+//puis créer un contour avec ces points et le retourne
 Contour BDD::getContour()
 {
 	sql::Statement *stmt = con->createStatement();

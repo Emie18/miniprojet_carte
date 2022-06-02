@@ -1,6 +1,10 @@
 /*-----------------------
   fichier dijkstra.h
+  Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
 ------------------------*/
+// This code is contributed by Aditya Kumar (adityakumar129) et modifier par Emilie et Maryline
+//lien : https://www.geeksforgeeks.org/c-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/
 // Programme C++ pour le chemin le plus court source unique de Dijkstra
 // algorithme.Le programme est pour la matrice d'adjacence
 // représentatant le graphe.
@@ -13,8 +17,7 @@ using namespace std;
 #define V 58
 
 // Une fonction utilitaire pour trouver le sommet avec le minimum
-// valeur de distance, à partir de l'ensemble des sommets non encore inclus
-// dans l'arborescence des chemins les plus courts
+// de distance
 int minDistance(int dist[], bool sptSet[])
 {
 	// Initialise la valeur min à l'infini
@@ -38,7 +41,6 @@ void printPath(int parent[], int j, vector<int> *chemin)
 		return;
 	}
 	printPath(parent, parent[j], chemin);
-	//cout << j << " ";
 	chemin->push_back(j);
 }
 
@@ -51,8 +53,6 @@ vector<int> printSolution(int dist[], int n, int parent[], int src, int dest, in
 	{
 		if (i == dest)
 		{
-			//printf("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i],
-			//	   src);
 			*distance = dist[i];
 			printPath(parent, i, &chemin);
 		}
@@ -106,4 +106,4 @@ vector<int> dijkstra(int graph[V][V], int src, int dest, int *distance)
 	return chemin;
 }
 #endif
-// This code is contributed by Aditya Kumar (adityakumar129) et modifier par Emilie et Maryline
+

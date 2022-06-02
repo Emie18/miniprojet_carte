@@ -1,16 +1,20 @@
 /*--------------------------------------
 	fichier FenetrePrincipale.cpp
 fonctions de la class FenetrePrincipale
+Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
 ----------------------------------------*/
 #include "FenetrePrincipale.h"
 #include "dijkstra.h"
+
 FenetrePrincipale::FenetrePrincipale(Carte carte)
 {
+    this->c = carte;
+
     //initialisation de la fenêtre
     this->setWindowTitle("Itineraire");
     this->setMinimumWidth(800);
     this->setMinimumHeight(600);
-    this->c = carte;
     mainLayout = new QHBoxLayout();
 
     std::vector<int> vide = {-1};
@@ -57,25 +61,28 @@ QGroupBox *FenetrePrincipale::group_box()
     return gb;
 }
 
+//fonction affichant les coordonnées dans la fenêtre
 void FenetrePrincipale::affiche_pos(QPointF p)
 {
     QString msg = "Coordonnées géographiques: " + QString::number(p.y(), 'f') + "°N " + QString::number(p.x(), 'f') + "°W";
     barre_statut->showMessage(msg);
 }
 
-//fonction affiche intineraire
+//fonction affichant l'itineraire
 void FenetrePrincipale::slot_bouton()
 {
-
     //on recupère les saisis de l'utilisateur
     std::string depart = this->ville1->text().toStdString();
     std::string arrive = this->ville2->text().toStdString();
+
     //on récupère les routes et les waypoints
     std::vector<Route> r = this->c.getRoutes();
     std::vector<Waypoint *> w = this->c.getWaypoints();
     QString d;
+
     //nombre de waypoints = 58
     int nb_waypoint = (int)w.size();
+
     //construction du graph
     //tableau à deux entrées reliant
     //les différents chemins et leurs distances
@@ -94,28 +101,35 @@ void FenetrePrincipale::slot_bouton()
             }
         }
     }
+
     //vérification de l'entrer saisie de l'utilisateur
     if (-1 == ville_index(depart, w) || -1 == ville_index(arrive, w))
     {
         QMessageBox::warning(this, "Warning", "Vous n'avez pas correctement saisi les villes\n(doit commencer par une Majuscule)");
     }
+
     //initialisaton de l'index de depart (src) et d'arrivée (dest)
     int src = ville_index(depart, w);
     int dest = ville_index(arrive, w);
+
     //variable qui contiendra la distance
     int distance;
+
     //fonction de recherche de chemin le plus court
     //elle renvoit un vector des chemins à prendre
-    //elle prend en paramêtre le grap, le depart(src)
+    //elle prend en paramêtre le graph, le depart(src)
     //la destination (dest), et la référence de distance
     std::vector<int> chemin = dijkstra(graph, src, dest, &distance);
+
     //affichage de la distance dans la fenetre
     d = QString::fromStdString("Distance: " + std::to_string(distance) + " Km");
     this->distance->setText(d);
+
     //destruction de l'encienne scene,et les deux vues;
     delete myscene;
     delete myview1;
     delete myview2;
+
     //construction de la nouvelle scene des des vues
     //avec le chemin remplis
     this->myscene = new ScenePlan(c, chemin);
@@ -126,7 +140,8 @@ void FenetrePrincipale::slot_bouton()
     connect(myview1, &GrandeVue::position, this, &FenetrePrincipale::affiche_pos);
     vbox->addWidget(myview2);
 }
-//fonction qui renvoit -1 si la ville rentrer est mauvaise
+
+//fonction qui renvoit -1 si la ville rentrée est mauvaise
 //sinon elle renvoit l'index de la ville
 int FenetrePrincipale::ville_index(std::string nom, std::vector<Waypoint *> w)
 {

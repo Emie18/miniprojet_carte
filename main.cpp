@@ -2,9 +2,13 @@
     fichier main.cpp
     contient la fonction
     principale
+    Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
 ----------------------------*/
+
 #include <QApplication>
 #include <QMessageBox>
+
 #include "FenetrePrincipale.h"
 #include "LoginDialog.h"
 #include "BDD.h"
@@ -16,7 +20,8 @@ int main(int argc, char *argv[])
     LoginDialog dlg;
     std::string host, base, user, pwd;
     if (!dlg.exec())
-    { // Ouverture de la boite de dialogue
+    {
+         // Ouverture de la boite de dialogue
         std::cout << "Sortie de l'application\n";
         return 1;
     }
@@ -27,8 +32,8 @@ int main(int argc, char *argv[])
     try
     {
         // Connexion BD
-        //BDD bdd("tcp://"+host+":3306", base, user, pwd);
-        BDD bdd("tcp://localhost:3306", "itineraires", "root", "jojo0108");
+        BDD bdd("tcp://"+host+":3306", base, user, pwd);
+
         //récupération de la carte
         cartes = Carte(bdd.getWaypoint(), bdd.getRoute(), bdd.getContour(), bdd.getVille());
     }

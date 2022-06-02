@@ -1,7 +1,10 @@
-/*---------------------
+/*------------------------
 	fichier BDD.h
 contient la class BDD
------------------------*/
+Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
+--------------------------*/
+
 #ifndef BDD_H
 #define BDD_H
 #include <iostream>
@@ -12,6 +15,7 @@ contient la class BDD
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
 #include "Carte.h"
+
 class BDD
 {
 public:
@@ -20,7 +24,7 @@ public:
 	~BDD();
 	//fonction recupérant les Routes de la bdd
 	std::vector<Route> getRoute();
-	//fonction recupérant les waypoint de la bdd
+	//fonction recupérant les waypoints de la bdd
 	std::vector<Waypoint *> getWaypoint();
 	//fonction le contour via les points de la bdd
 	Contour getContour();

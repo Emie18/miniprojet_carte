@@ -1,7 +1,9 @@
-/*---------------------
+/*-------------------------
 	fichier Scene.h
 contient la class ScenePlan
------------------------*/
+Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
+---------------------------*/
 #ifndef SCENEPLAN_H
 #define SCENEPLAN_H
 

@@ -2,7 +2,10 @@
     fichier LoginDialog.cpp
     contient les fonctions
     de la class LoginDialog
+    Auteurs : Emilie Le Rouzic
+    &   Maryline Le Bot
 ------------------------------*/
+
 #include "LoginDialog.h"
 #include <QDebug>
 #include <QGridLayout>
